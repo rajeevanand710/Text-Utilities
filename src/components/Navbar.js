@@ -17,7 +17,7 @@ export default function Navbar(props) {
                         <a className="nav-link active" style={{color: props.mode==='light'?'#042743':'white'}}aria-current="page" href="#">Home</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" style={{color: props.mode==='light'?'#042743':'white'}} href="/about">{props.aboutText}</a>
+                        <a className="nav-link" style={{color: props.mode==='light'?'#042743':'white'}} href="#">{props.aboutText}</a>
                     </li>
                 </ul>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id='btns'>
