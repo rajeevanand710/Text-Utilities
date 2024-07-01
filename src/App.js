@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alerts from './components/Alerts';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  // Switch,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 
@@ -50,22 +51,22 @@ function App() {
   }
   return (
     <>
-    {/* <Router> */}
+    <Router>
       <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode} greenMode={greenMode}
       lightMode={lightMode}/>
       <Alerts alert={alert}/>
       <div className="container my-3">
-        <TextForm showAlert={showAlert} heading="Enter the text to analyze below:" mode={mode} toggleMode={toggleMode} greenMode={greenMode} lightMode={lightMode}/>
-        {/* <switch>
+        
+        {/* <Switch> */}
           <Routes>
-            <Route exact path='/about' element={<About />}>
+            <Route exact path='/about' element={<About mode={mode} toggleMode={toggleMode} greenMode={greenMode} lightMode={lightMode}/>}>
             </Route>
-            <Route exact path='/' element={}>
+            <Route exact path='/' element={<TextForm showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Remove extra spaces." mode={mode} toggleMode={toggleMode} greenMode={greenMode} lightMode={lightMode}/>}>
             </Route>
           </Routes>
-        </switch> */}
+        {/* </Switch> */}
       </div>
-    {/* </Router>   */}
+    </Router>  
     </>
 
   );

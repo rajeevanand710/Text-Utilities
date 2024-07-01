@@ -26,6 +26,7 @@ export default function TextForm(props) {
         var text = document.getElementById("myBox")
         text.select();
         navigator.clipboard.writeText(text.value)
+        document.getSelection().removeAllRanges()
         props.showAlert(" Text Copied.", "success")
     }
     const handleSpaces = () => {
@@ -42,23 +43,23 @@ export default function TextForm(props) {
     return (
         <>
         <div className="container" style={{color: props.mode==='light'?'#042743':'white'}}>
-            <h1>{props.heading}</h1>
+            <h2 className='mb-4'>{props.heading}</h2>
             <div className="mb-3">
                 <textarea className="form-control my-3"  value={text} onChange={handleOnChange} id="myBox" style={{color: props.mode==='light'?'#042743':'white'}} 
                  rows="12"></textarea>
-                <button className="btn btn-primary  mx-2" onClick={handleUpClick}>Convert to Upper case</button>
-                <button className="btn btn-primary mx-2" onClick={handleDownClick}>Convert to Lower case</button>
-                <button className="btn btn-primary mx-2" onClick={handleClear}>Clear Text</button>
-                <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
-                <button className="btn btn-primary mx-2" onClick={handleSpaces}>Remove Extra Spaces</button>
+                <button disabled={text.length===0} className="btn btn-primary  mx-2 my-2" onClick={handleUpClick}>Convert to Upper case</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleDownClick}>Convert to Lower case</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleClear}>Clear Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleSpaces}>Remove Extra Spaces</button>
             </div>
         </div>
         <div className="container my-3" style={{color: props.mode==='light'?'#042743':'white'}}>
-            <h2>Your Text Summary</h2>
-            <p>{text.split(" ").length} words, {text.length} characters</p>
-            <p>{0.008 * text.split(" ").length} minutes taken to read complete. </p>
-            <h2>Preview</h2>
-            <p>{text.length>0?text:"Enter something in the textarea to preview"}</p>
+            <h3>Your Text Summary</h3>
+            <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words, {text.length} characters</p>
+            <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes taken to read complete. </p>
+            <h3>Preview</h3>
+            <p>{text.length>0?text:"Nothing to preview!"}</p>
         </div>
         </>
     )
