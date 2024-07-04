@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
-
 
 export default function Navbar(props) {
   return (
@@ -15,20 +13,20 @@ export default function Navbar(props) {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                        <Link className="nav-link active" style={{color: props.mode==='light'?'#042743':'white'}}aria-current="page" to="/">Home</Link>
+                        <Link className="nav-link" style={{color: props.mode==='light'?'#042743':'white'}}  aria-current="page" to="/">Home</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" style={{color: props.mode==='light'?'#042743':'white'}} to="/about">{props.aboutText}</Link>
                     </li>
                 </ul>
                 <div className="btn-group" role="group" aria-label="Basic radio toggle button group" id='btns'>
-                    <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" onClick={props.lightMode} />
+                    <input type="radio" className="btn-check bg-light" name="btnradio" id="btnradio1" autoComplete="off" onClick={()=>{props.lightMode('light')}} />
                     <label className="btn btn-outline-primary" htmlFor="btnradio1">Light Mode</label>
 
-                    <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" onClick={props.toggleMode}/>
+                    <input type="radio" className="btn-check bg-dark" name="btnradio" id="btnradio2" autoComplete="off" onClick={()=>{props.toggleMode('secondary')}}/>
                     <label className="btn btn-outline-primary" htmlFor="btnradio2">Dark Mode</label>
 
-                    <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" onClick={props.greenMode}/>
+                    <input type="radio" className="btn-check bg-success" name="btnradio" id="btnradio3" autoComplete="off" onClick={()=>{props.greenMode('success')}}/>
                     <label className="btn btn-outline-primary" htmlFor="btnradio3">Green Mode</label>
                 </div>
             </div>

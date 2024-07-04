@@ -1,1 +1,7 @@
+.accordian-button::after {
+    filter: invert(1);
+}
 
+.accordian-button {
+    background-color: pink;
+}

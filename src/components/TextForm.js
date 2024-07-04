@@ -11,13 +11,11 @@ export default function TextForm(props) {
         props.showAlert(" Converted to upper case.", "success")
     }
     const handleDownClick = () => {
-        // console.log("Lowercase was clicked!" + text)
         let newText = text.toLowerCase() 
         setText(newText)
         props.showAlert(" Converted to lower case.", "success")
     }
     const handleClear = () => {
-        // console.log("Lowercase was clicked!" + text)
         let newText = "" 
         setText(newText)
         props.showAlert(" Text Cleared!", "success")
@@ -35,7 +33,6 @@ export default function TextForm(props) {
         props.showAlert(" Extra spaces removed!", "success")
     }
     const handleOnChange = (event) => {
-        // console.log("On Change")
         setText(event.target.value)
     }
     const [text, setText] = useState('')
@@ -56,8 +53,8 @@ export default function TextForm(props) {
         </div>
         <div className="container my-3" style={{color: props.mode==='light'?'#042743':'white'}}>
             <h3>Your Text Summary</h3>
-            <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words, {text.length} characters</p>
-            <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes taken to read complete. </p>
+            <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words, {text.length} characters</p>
+            <p>{0.008 * text.split(/\s+/).filter((element)=>{return element.length!==0}).length} minutes taken to read complete. </p>
             <h3>Preview</h3>
             <p>{text.length>0?text:"Nothing to preview!"}</p>
         </div>

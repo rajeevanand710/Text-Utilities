@@ -26,25 +26,45 @@ function App() {
       setAlert(null)
     }, 2500);
   }
-  const toggleMode = () => {
+
+  const removeBodyClasses = () => {
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-success')
+    document.getElementById("myBox").classList.remove('bg-success')
+    document.getElementById("myBox").classList.remove('bg-secondary')
+    document.getElementById("myNav").classList.remove('bg-secondary')
+  }
+
+  const toggleMode = (cls) => {
+    console.log(cls)
     setMode ('dark')
-    document.body.style.backgroundColor = "#042743"
-    document.getElementById("myBox").style.backgroundColor = "#042743"
-    document.getElementById("myNav").style.backgroundColor = "#042743"
+    removeBodyClasses();
+    document.body.classList.add('bg-'+cls)
+    // document.body.style.backgroundColor = "#042743"
+    document.getElementById("myBox").classList.add('bg-'+cls)
+    document.getElementById("myNav").classList.add('bg-'+cls)
     showAlert("Dark Mode activated!", "success")
     document.title = "TextUtils - Dark Mode"
   }
-  const lightMode = () => {
+  const lightMode = (cls) => {
+    console.log(cls)
     setMode ('light')
-    document.body.style.backgroundColor = "white"
+    removeBodyClasses();
+    // document.body.style.backgroundColor = "white"
+    document.body.classList.add('bg-'+cls)
     document.getElementById("myBox").style.backgroundColor = "white"
     document.getElementById("myNav").style.backgroundColor = "white"
     showAlert(" Light Mode has been enabled.", "success")
   }
-  const greenMode = () => {
+  const greenMode = (cls) => {
+    console.log(cls)
     setMode ('green')
-    document.body.style.backgroundColor = "green"
-    document.getElementById("myBox").style.backgroundColor = "green"
+    removeBodyClasses();
+    // document.body.style.backgroundColor = "green"
+    document.body.classList.add('bg-'+cls)
+    // document.getElementById("myBox").style.backgroundColor = "green"
+    document.getElementById("myBox").classList.add('bg-'+cls)
     document.getElementById("myNav").style.backgroundColor = "#345e34"
     document.getElementById("btnradio3").style.backgroundColor = "pink"
     showAlert("Green Mode activated!", "success")
